@@ -16,6 +16,20 @@
       }
     },
     {
+      "path": "/formdesigner",
+      "name": "formdesigner",
+      "component": "/formDesigner/index",
+      "meta": {
+        "icon": "HomeFilled",
+        "title": "表单设计器",
+        "isLink": "",
+        "isHide": false,
+        "isFull": true,
+        "isAffix": true,
+        "isKeepAlive": false
+      }
+    },
+    {
       "path": "/dataScreen",
       "name": "dataScreen",
       "component": "/dataScreen/index",

@@ -32,9 +32,13 @@ import I18n from "@/languages/index";
 import pinia from "@/stores";
 // errorHandler
 import errorHandler from "@/utils/errorHandler";
-
+import formCreate from "@form-create/element-ui";
+import FcDesigner from "@form-create/designer";
+import ELEMENT from "element-plus";
 const app = createApp(App);
-
+app.use(ELEMENT);
+app.use(formCreate);
+app.use(FcDesigner);
 app.config.errorHandler = errorHandler;
 
 // register the element Icons component
