@@ -7,7 +7,7 @@
         </div>
         <div class="header-ct">
           <div class="header-ct-title">
-            <span>智慧旅游可视化大数据展示平台</span>
+            <span>数据中心</span>
             <div class="header-ct-warning">平台高峰预警信息（2条）</div>
           </div>
         </div>
@@ -20,7 +20,7 @@
         <div class="dataScreen-lf">
           <div class="dataScreen-top">
             <div class="dataScreen-main-title">
-              <span>实时游客统计</span>
+              <span>接入方式</span>
               <img src="./images/dataScreen-title.png" alt="" />
             </div>
             <div class="dataScreen-main-chart">
@@ -29,7 +29,7 @@
           </div>
           <div class="dataScreen-center">
             <div class="dataScreen-main-title">
-              <span>男女比例</span>
+              <span>数据订阅</span>
               <img src="./images/dataScreen-title.png" alt="" />
             </div>
             <div class="dataScreen-main-chart">
@@ -78,7 +78,7 @@
         <div class="dataScreen-rg">
           <div class="dataScreen-top">
             <div class="dataScreen-main-title">
-              <span>热门景区排行</span>
+              <span>最新接入API</span>
               <img src="./images/dataScreen-title.png" alt="" />
             </div>
             <div class="dataScreen-main-chart">
@@ -87,7 +87,7 @@
           </div>
           <div class="dataScreen-center">
             <div class="dataScreen-main-title">
-              <span>年度游客量对比</span>
+              <span>数据拷贝</span>
               <img src="./images/dataScreen-title.png" alt="" />
             </div>
             <div class="dataScreen-main-chart">

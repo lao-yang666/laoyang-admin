@@ -1,4 +1,5 @@
 <template>
+  xxx
   <template v-for="subItem in menuList" :key="subItem.path">
     <el-sub-menu v-if="subItem.children?.length" :index="subItem.path">
       <template #title>
@@ -27,6 +28,7 @@ defineProps<{ menuList: Menu.MenuOptions[] }>();
 
 const router = useRouter();
 const handleClickMenu = (subItem: Menu.MenuOptions) => {
+  debugger;
   if (subItem.meta.isLink) return window.open(subItem.meta.isLink, "_blank");
   router.push(subItem.path);
 };
