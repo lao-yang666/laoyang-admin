@@ -115,7 +115,7 @@ import Pagination from "./components/Pagination.vue";
 import ColSetting from "./components/ColSetting.vue";
 import TableColumn from "./components/TableColumn.vue";
 import Sortable from "sortablejs";
-
+import { darkTheme, lightTheme } from "./data";
 export interface ProTableProps {
   columns: ColumnProps[]; // 列配置项  ==> 必传
   data?: any[]; // 静态 table data 数据，若存在则不会使用 requestApi 返回的 data ==> 非必传
@@ -129,7 +129,8 @@ export interface ProTableProps {
   border?: boolean; // 是否带有纵向边框 ==> 非必传（默认为true）
   toolButton?: ("refresh" | "setting" | "search")[] | boolean; // 是否显示表格功能按钮 ==> 非必传（默认为true）
   rowKey?: string; // 行数据的 Key，用来优化 Table 的渲染，当表格数据多选时，所指定的 id ==> 非必传（默认为 id）
-  searchCol?: number | Record<BreakPoint, number>; // 表格搜索项 每列占比配置 ==> 非必传 { xs: 1, sm: 2, md: 2, lg: 3, xl: 4 }
+  searchCol?: number | Record<BreakPoint, number>; // 表格搜索项 每列占比配置 ==> 非必传 { xs: 1, sm: 2, md: 2, lg: 3, xl: 4 }}
+  theme?: "light" | "dark"; // 表格主题 ==> 非必传（默认为 light）
 }
 
 // 接受父组件参数，配置默认值
@@ -141,7 +142,8 @@ const props = withDefaults(defineProps<ProTableProps>(), {
   border: true,
   toolButton: true,
   rowKey: "id",
-  searchCol: () => ({ xs: 1, sm: 2, md: 2, lg: 3, xl: 4 })
+  searchCol: () => ({ xs: 1, sm: 2, md: 2, lg: 3, xl: 4 }),
+  theme: "light"
 });
 
 // table 实例
@@ -291,6 +293,9 @@ const dragSort = () => {
     }
   });
 };
+const theme_style = ref(lightTheme);
+
+theme_style.value = props.theme === "dark" ? darkTheme : theme_style.value;
 
 // 暴露给父组件的参数和方法 (外部需要什么，都可以从这里暴露出去)
 defineExpose({
@@ -312,3 +317,58 @@ defineExpose({
   selectedListIds
 });
 </script>
+<style lang="scss" scoped>
+.el-table {
+  --el-table-header-text-color: v-bind(theme_style.textColor);
+  --el-table-header-bg-color: v-bind(theme_style.headerBackground);
+  --el-table-row-hover-bg-color: v-bind(theme_style.textColorHover);
+  --el-table-text-color: v-bind(theme_style.textColor);
+  --el-table-tr-bg-color: v-bind(theme_style.trBackground);
+  --el-table-border: v-bind(theme_style.trBorder);
+  --el-table-border-color: v-bind(theme_style.trBorderColor);
+}
+
+.el-pagination {
+  --el-fill-color-blank: v-bind(theme_style.background);
+  --el-fill-color: v-bind(theme_style.background);
+  --el-pagination-text-color: v-bind(theme_style.textColor);
+  --el-pagination-button-color: v-bind(theme_style.textColor);
+  --el-pagination-button-bg-color: v-bind(theme_style.background);
+  --el-pagination-button-border-color: v-bind(theme_style.inputBorderColor);
+  --el-disabled-bg-color: v-bind(theme_style.background);
+  --el-input-border-color: v-bind(theme_style.inputBorderColor);
+}
+
+.zx-el-pager {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  --el-input-border-color: v-bind(theme_style.border);
+  --el-fill-color-light: v-bind(theme_style.inputBorderColor);
+  --el-select-dropdown-bg-color: v-bind(theme_style.background);
+  :deep(.el-pager li),
+  :deep(.el-input__wrapper),
+  :deep(.el-select__wrapper) {
+    border: var(--el-input-border-color);
+  }
+  :deep(.el-select-dropdown__item.is-hovering) {
+    background-color: var(--el-fill-color-light);
+  }
+  :deep(.el-select-dropdown__wrap) {
+    background-color: var(--el-select-dropdown-bg-color);
+  }
+  :deep(.zx-el-popper) {
+    border: var(--el-input-border-color);
+  }
+}
+
+.table_common {
+  --el-loading-mask-bg-color: v-bind(theme_style.loading_bg_color);
+  :deep(.el-loading-mask) {
+    background-color: var(--el-loading-mask-bg-color);
+  }
+  :deep(thead) {
+    font-weight: 900;
+  }
+}
+</style>

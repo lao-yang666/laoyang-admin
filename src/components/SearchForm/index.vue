@@ -41,12 +41,23 @@ import SearchFormItem from "./components/SearchFormItem.vue";
 import Grid from "@/components/Grid/index.vue";
 import GridItem from "@/components/Grid/components/GridItem.vue";
 
+interface SearchButtonProps {
+  search?: (params: any) => void; // 搜索方法
+  reset?: (params: any) => void; // 重置方法
+  showResetButton?: boolean; // 是否显示重置按钮
+  showSearchButton?: boolean; // 是否显示搜索按钮
+  resetButtonText?: string; // 重置按钮文本
+  searchButtonText?: string; // 搜索按钮文本
+  suffix?: boolean; // 搜索按钮是否在最右侧
+}
+
 interface ProTableProps {
   columns?: ColumnProps[]; // 搜索配置列
   searchParam?: { [key: string]: any }; // 搜索参数
   searchCol: number | Record<BreakPoint, number>;
   search: (params: any) => void; // 搜索方法
   reset: (params: any) => void; // 重置方法
+  searchButton?: SearchButtonProps;
 }
 
 // 默认值
