@@ -389,6 +389,20 @@
             "isAffix": false,
             "isKeepAlive": true
           }
+        },
+        {
+          "path": "/assembly/overText",
+          "name": "overText",
+          "component": "/assembly/overText/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "文本溢出",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
         }
       ]
     },
